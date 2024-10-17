@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply for a Position at GraphFusion</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+        :root {
+            --text-color: #333333;
+            --background-color: #ffffff;
+            --accent-color: #4d38ac;
+            --secondary-color: #f5f5f4;
+            --tertiary-color: #fafaf9;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+
+        form {
+            background-color: var(--tertiary-color);
+            padding: 2rem;
+            border-radius: 8px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        textarea {
+            height: 150px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--background-color);
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background-color: #3d2d8a;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Apply for a Position at GraphFusion</h1>
+        <form id="application-form">
+            <label for="job-title">Position</label>
+            <input type="text" id="job-title" name="job-title" readonly>
+
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <label for="resume">Resume/CV</label>
+            <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" required>
+
+            <label for="cover-letter">Cover Letter</label>
+            <textarea id="cover-letter" name="cover-letter" required></textarea>
+
+            <label for="portfolio">Portfolio URL (if applicable)</label>
+            <input type="url" id="portfolio" name="portfolio">
+
+            <label for="start-date">Earliest Start Date</label>
+            <input type="date" id="start-date" name="start-date" required>
+
+            <label for="hear-about">How did you hear about us?</label>
+            <select id="hear-about" name="hear-about" required>
+                <option value="">Please select</option>
+                <option value="job-board">Job Board</option>
+                <option value="company-website">Company Website</option>
+                <option value="referral">Employee Referral</option>
+                <option value="social-media">Social Media</option>
+                <option value="other">Other</option>
+            </select>
+
+            <button type="submit" class="cta-button">Submit Application</button>
+        </form>
+    </div>
+
+    <script>
+        // Get the job title from the URL parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const jobTitle = urlParams.get('job');
+        
+        // Set the job title in the form
+        document.getElementById('job-title').value = jobTitle ? jobTitle.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) : 'Unknown Position';
+
+        // Handle form submission
+        document.getElementById('application-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Here you would typically send the form data to your server
+            // For this example, we'll just show an alert
+            alert('Thank you for your application! We will be in touch soon.');
+        });
+    </script>
+</body>
+</html>

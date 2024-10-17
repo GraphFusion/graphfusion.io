@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contribute to GraphFusion - Internships and Open-Source Projects</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+        :root {
+            --text-color: #333333;
+            --background-color: #ffffff;
+            --accent-color: #4d38ac;
+            --secondary-color: #f5f5f4;
+            --tertiary-color: #fafaf9;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: var(--accent-color);
+            color: var(--background-color);
+            padding: 2rem 0;
+        }
+
+        h1, h2, h3 {
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--accent-color);
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 1.125rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--background-color);
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #3d2d8a;
+        }
+
+        .opportunities {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .opportunity {
+            background-color: var(--tertiary-color);
+            border-radius: 8px;
+            padding: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .opportunity:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Contribute to GraphFusion</h1>
+            <p>Explore internship opportunities and open-source projects</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section>
+            <h2>Internship Opportunities</h2>
+            <p>Gain valuable experience in AI and graph technologies while working on cutting-edge projects.</p>
+            <div class="opportunities">
+                <div class="opportunity">
+                    <h3>AI Research Intern</h3>
+                    <p>Assist in developing new AI algorithms for knowledge graph applications.</p>
+                    <a href="#" class="cta-button">Learn More</a>
+                </div>
+                <div class="opportunity">
+                    <h3>Graph Algorithm Intern</h3>
+                    <p>Work on optimizing graph algorithms for large-scale data processing.</p>
+                    <a href="#" class="cta-button">Learn More</a>
+                </div>
+                <div class="opportunity">
+                    <h3>Front-end Development Intern</h3>
+                    <p>Create intuitive user interfaces for visualizing complex graph structures.</p>
+                    <a href="#" class="cta-button">Learn More</a>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Open-Source Projects</h2>
+            <p>Contribute to our open-source initiatives and help shape the future of graph technologies.</p>
+            <div class="opportunities">
+                <div class="opportunity">
+                    <h3>GraphFusion Core</h3>
+                    <p>Our main open-source graph processing engine.</p>
+                    <a href="https://github.com/graphfusion/core" class="cta-button">View on GitHub</a>
+                </div>
+                <div class="opportunity">
+                    <h3>GraphViz Tools</h3>
+                    <p>A collection of visualization tools for knowledge graphs.</p>
+                    <a href="https://github.com/graphfusion/graphviz-tools" class="cta-button">View on GitHub</a>
+                </div>
+                <div class="opportunity">
+                    <h3>Graph Algorithms Library</h3>
+                    <p>Efficient implementations of common graph algorithms.</p>
+                    <a href="https://github.com/graphfusion/graph-algos" class="cta-button">View on GitHub</a>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>How to Get Started</h2>
+            <ol>
+                <li>Explore the opportunities listed above</li>
+                <li>Check out our GitHub repositories and documentation</li>
+                <li>Join our Discord community to connect with other contributors</li>
+                <li>Submit your application or pull request</li>
+            </ol>
+            <p>We look forward to your contributions!</p>
+        </section>
+
+        <a href="index.html" class="back-link">← Back to Home</a>
+    </main>
+</body>
+</html>
