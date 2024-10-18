@@ -111,6 +111,61 @@
         .back-link:hover {
             text-decoration: underline;
         }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        form {
+            display: grid;
+            gap: 1rem;
+        }
+
+        label {
+            font-weight: 600;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        textarea {
+            height: 100px;
+        }
     </style>
 </head>
 <body>
@@ -128,18 +183,36 @@
             <div class="opportunities">
                 <div class="opportunity">
                     <h3>AI Research Intern</h3>
-                    <p>Assist in developing new AI algorithms for knowledge graph applications.</p>
-                    <a href="#" class="cta-button">Learn More</a>
+                    <p>Assist in developing new AI algorithms for knowledge graph applications. You'll work on:</p>
+                    <ul>
+                        <li>Implementing and testing machine learning models for graph data</li>
+                        <li>Conducting literature reviews on the latest AI techniques for graphs</li>
+                        <li>Collaborating with senior researchers on innovative projects</li>
+                    </ul>
+                    <p><strong>Requirements:</strong> Strong background in AI/ML, programming skills (Python preferred), familiarity with graph theory</p>
+                    <a href="#" class="cta-button" onclick="openModal('ai-research-intern')">Apply Now</a>
                 </div>
                 <div class="opportunity">
                     <h3>Graph Algorithm Intern</h3>
-                    <p>Work on optimizing graph algorithms for large-scale data processing.</p>
-                    <a href="#" class="cta-button">Learn More</a>
+                    <p>Work on optimizing graph algorithms for large-scale data processing. Your tasks will include:</p>
+                    <ul>
+                        <li>Implementing efficient graph traversal and analysis algorithms</li>
+                        <li>Optimizing existing algorithms for better performance</li>
+                        <li>Benchmarking and comparing different algorithmic approaches</li>
+                    </ul>
+                    <p><strong>Requirements:</strong> Strong algorithmic skills, proficiency in C++ or Java, knowledge of data structures</p>
+                    <a href="#" class="cta-button" onclick="openModal('graph-algorithm-intern')">Apply Now</a>
                 </div>
                 <div class="opportunity">
                     <h3>Front-end Development Intern</h3>
-                    <p>Create intuitive user interfaces for visualizing complex graph structures.</p>
-                    <a href="#" class="cta-button">Learn More</a>
+                    <p>Create intuitive user interfaces for visualizing complex graph structures. You'll be involved in:</p>
+                    <ul>
+                        <li>Designing and implementing interactive graph visualization tools</li>
+                        <li>Developing user-friendly interfaces for graph analysis tools</li>
+                        <li>Collaborating with UX designers to improve user experience</li>
+                    </ul>
+                    <p><strong>Requirements:</strong> Proficiency in JavaScript and modern front-end frameworks (React preferred), experience with data visualization libraries</p>
+                    <a href="#" class="cta-button" onclick="openModal('frontend-dev-intern')">Apply Now</a>
                 </div>
             </div>
         </section>
@@ -179,5 +252,67 @@
 
         <a href="index.html" class="back-link">← Back to Home</a>
     </main>
+
+    <!-- Application Modal -->
+    <div id="applicationModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modalTitle"></h2>
+            <form id="applicationForm">
+                <input type="hidden" id="position" name="position">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="resume">Resume/CV:</label>
+                <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" required>
+                <label for="coverLetter">Cover Letter:</label>
+                <textarea id="coverLetter" name="coverLetter" required></textarea>
+                <button type="submit" class="cta-button">Submit Application</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Get the modal
+        var modal = document.getElementById("applicationModal");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // Function to open the modal
+        function openModal(position) {
+            document.getElementById("modalTitle").textContent = "Apply for " + position.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+            document.getElementById("position").value = position;
+            modal.style.display = "block";
+        }
+
+        // Handle form submission
+        document.getElementById("applicationForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            let emailBody = '';
+            for (let [key, value] of formData.entries()) {
+                if (key !== 'resume') {
+                    emailBody += `${key}: ${value}\n\n`;
+                }
+            }
+            const subject = `Application for ${formData.get('position')}`;
+            const mailtoLink = `mailto:careers@GraphFusion.onmicrosoft.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
+            window.location.href = mailtoLink;
+        });
+    </script>
 </body>
 </html>
