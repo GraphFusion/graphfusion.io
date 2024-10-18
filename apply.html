@@ -134,13 +134,13 @@
         document.getElementById('job-title').value = jobTitle ? jobTitle.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) : 'Unknown Position';
 
         // Handle form submission
-        document.getElementById('prepare-email').addEventListener('click', function(e) {
+        document.getElementById('application-form').addEventListener('submit', function(e) {
             e.preventDefault();
-            const form = document.getElementById('application-form');
+            const form = this;
             let emailBody = '';
             for (let i = 0; i < form.elements.length; i++) {
                 const element = form.elements[i];
-                if (element.name && element.value) {
+                if (element.name && element.value && element.type !== 'file') {
                     emailBody += `${element.name}: ${element.value}\n\n`;
                 }
             }
